@@ -188,7 +188,6 @@ export function CaseView() {
         const filesToProcess = filesArray.slice(0, remainingSlots);
       
         filesToProcess.forEach(file => {
-          console.log(file)
           const reader = new FileReader();
           reader.onloadend = () => {
             setAttachedImages(prev => [...prev, reader.result as string]);

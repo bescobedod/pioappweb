@@ -78,3 +78,19 @@ export async function quitPermisoCaso(id_user: string) {
 
     return response.json();
 }
+
+export async function getAllRoles() {
+  const response = await authFetch(`/users/getAllRoles`, {
+    headers: getAuthHeaders()
+  });
+
+  if (!response.ok) {
+        const text = await response.text().catch(() => '');
+        let details: any;
+        try { details = JSON.parse(text); } catch {}
+        console.error('Error al obtener roles:', details || text);
+        alert(details?.error || details?.message || 'Error al obtener roles de usuario');
+  }
+
+  return response.json();
+}

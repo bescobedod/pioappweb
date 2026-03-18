@@ -21,17 +21,6 @@ export interface MediaFile {
   raw?: File;
 }
 
-export interface UserReadStatus {
-  userId: string;
-  userName: string;
-  userRole: string;
-  userAvatar?: string;
-  viewed: boolean;
-  viewedAt?: Date;
-  understood: boolean;
-  understoodAt?: Date;
-}
-
 export function PublicationsView() {
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
@@ -45,6 +34,7 @@ export function PublicationsView() {
   const [categories, setCategories] = useState<CategoriaPublicacion[]>([]);
   const [publications, setPublications] = useState<DetallePublicacion[]>([]);
   const [roles, setRoles] = useState<any[]>([]);
+  const rol = localStorage.getItem("rol");
 
   const fetchCategorias = async () => {
     try {
@@ -376,36 +366,44 @@ useEffect(() => {
                         >
                           Ver Detalle
                         </Button>
-                        <Button
-                          onClick={() => handleOpenInsights(publication)}
-                          variant="outline"
-                          size="sm"
-                          className="flex-1 border-gray-300 hover:border-purple-500 bg-white"
-                        >
-                          <BarChart3 className="h-4 w-4 mr-1" />
-                          Estadísticas
-                        </Button>
+                        {(rol === "12" || rol === "11") && (
+                          <Button
+                            onClick={() => handleOpenInsights(publication)}
+                            variant="outline"
+                            size="sm"
+                            className="flex-1 border-gray-300 hover:border-purple-500 bg-white"
+                          >
+                            <BarChart3 className="h-4 w-4 mr-1" />
+                            Estadísticas
+                          </Button>
+                        )}
                       </div>
-                      <div className="flex gap-2">
-                        <Button
-                          onClick={() => handleOpenEdit(publication)}
-                          variant="outline"
-                          size="sm"
-                          className="flex-1 border-gray-300 hover:border-blue-500 bg-white"
-                        >
-                          <Edit className="h-4 w-4 mr-1" />
-                          Editar
-                        </Button>
-                        <Button
-                          onClick={() => handletogglePublication(publication.id_publicacion)}
-                          variant="outline"
-                          size="sm"
-                          className="flex-1 border-gray-300 hover:border-red-500 bg-white"
-                        >
-                          {publication.publicacion_estado ? <EyeOff className="h-4 w-4 mr-1" /> : <Eye className="h-4 w-4 mr-1" />}
-                          {publication.publicacion_estado ? "Inactivar" : "Reactivar"}
-                        </Button>
-                      </div>
+                      {(rol === "12" || rol === "11") && (
+                        <div className="flex gap-2">
+                          <Button
+                            onClick={() => handleOpenEdit(publication)}
+                            variant="outline"
+                            size="sm"
+                            className="flex-1 border-gray-300 hover:border-blue-500 bg-white"
+                          >
+                            <Edit className="h-4 w-4 mr-1" />
+                            Editar
+                          </Button>
+                          <Button
+                            onClick={() => handletogglePublication(publication.id_publicacion)}
+                            variant="outline"
+                            size="sm"
+                            className="flex-1 border-gray-300 hover:border-red-500 bg-white"
+                          >
+                            {publication.publicacion_estado ? (
+                              <EyeOff className="h-4 w-4 mr-1" />
+                            ) : (
+                              <Eye className="h-4 w-4 mr-1" />
+                            )}
+                            {publication.publicacion_estado ? "Inactivar" : "Reactivar"}
+                          </Button>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </Card>

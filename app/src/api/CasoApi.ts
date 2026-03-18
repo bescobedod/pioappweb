@@ -178,18 +178,17 @@ export async function uploadCasoArchivos(id_caso: string, files: File[]) {
   const token = localStorage.getItem('token');
 
   const form = new FormData();
-  files.forEach((f) => form.append('imagenes', f)); // 👈 el campo DEBE llamarse 'imagenes'
+  files.forEach((f) => form.append('imagenes', f));
 
   const response = await fetch(`${BASE_URL}/casos/uploadArchivosCaso/${id_caso}/archivos`, {
     method: 'POST',
     headers: {
-      Authorization: `Bearer ${token}` // 👈 NO agregues Content-Type aquí
+      Authorization: `Bearer ${token}`
     },
     body: form
   });
 
   if (!response.ok) {
-    // Intenta leer detalles del backend para depurar mejor
     const text = await response.text().catch(() => '');
     let details: any;
     try { details = JSON.parse(text); } catch {}

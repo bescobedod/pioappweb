@@ -15,6 +15,9 @@ import { CasesView } from "./src/CasesView";
 import { CaseDetail } from "./src/CaseDetailView";
 import { FinalCaseDetail } from "./src/FinalCaseView";
 import { CasesPermissionsView } from "./src/CasesPermissionsView";
+import { PublicationsView } from "./src/PublicationsView";
+// import { ReturnAuthorizationView } from "./src/ReturnAuthorizationView";
+// import { CreditNotesView } from "./src/CreditNotesView";
 import { useAuth } from "./src/api/context/AuthContext";
 
 type View =
@@ -27,7 +30,11 @@ type View =
   | "casos"
   | "caso-detalle"
   | "caso-cierre"
-  | "casos-permisos";
+  | "casos-permisos"
+  | "publicaciones"
+  // | "devoluciones"
+  // | "notas-credito"
+  ;
 
 export default function App() {
   const [currentView, setCurrentView] = useState<View>("home");
@@ -104,13 +111,12 @@ export default function App() {
   };
 
   const handleBackFromDeliveryView = () => {
-  if (previousView) {
-    setCurrentView(previousView);
-  } else {
-    setCurrentView("casos");
-  }
-};
-
+    if (previousView) {
+      setCurrentView(previousView);
+    } else {
+      setCurrentView("casos");
+    }
+  };
 
   if (isAuthenticated === false) {
     return <LoginView onLogin={handleLogin} />;
@@ -171,6 +177,9 @@ export default function App() {
                 onBack={handleBack}
               />
             )}
+            {currentView === "publicaciones" && <PublicationsView/>}
+            {/* {currentView === "devoluciones" && <ReturnAuthorizationView/>}
+            {currentView === "notas-credito" && <CreditNotesView/>} */}
           </div>
         </div>
         <aside className="hidden lg:block w-64 bg-white shadow-2xl border-l border-gray-200 fixed top-[110px] right-0 bottom-0 h-[calc(100vh-80px)]">

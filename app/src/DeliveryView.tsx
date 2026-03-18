@@ -78,7 +78,6 @@ export function DeliveryView({caso, onBack}: DeliveryViewProps) {
       setSelectedPilot(sup);
 
       setComments(caso.mensaje)
-      console.log(tienda, sup, caso.mensaje);
       const imgs = await getArchivosByCaso(caso.id_caso);
       setCaseImages(imgs);
     } catch (err) {
@@ -93,10 +92,6 @@ export function DeliveryView({caso, onBack}: DeliveryViewProps) {
   useEffect(() => {
     setSelectedStore(store);
   }, [store])
-  
-  useEffect(() => {
-    console.log(selectedScheduleDay, selectedTipoVisita)
-  }, [selectedTipoVisita, selectedScheduleDay])
 
   useEffect(() => {
     const fetchSupervisors = async () => {

@@ -100,7 +100,6 @@ export function FinalCaseDetail({ caso, onBack }: FinalCaseDetailProps) {
 
                 const visitasReabiertas = await getVisitasReabiertas(Number(visitaEmergencia?.id_visita), caso.id_caso);
                 setVisitasReabiertas(visitasReabiertas);
-                console.log(data?.id_visita, caso.id_caso)
             } catch (err: any) {
                 if (['TOKEN_EXPIRED', 'TOKEN_INVALID', 'TOKEN_REQUIRED'].includes(err?.message)) {
                     localStorage.clear();
@@ -431,7 +430,7 @@ export function FinalCaseDetail({ caso, onBack }: FinalCaseDetailProps) {
                   <div>
                     <p className="text-blue-600 text-sm mb-1">Imagen</p>
                     <button 
-                      onClick={() => setShowImageModal(true)}
+                      onClick={() => {setShowImageModal(true); setSelectedImage(visita?.url_image.toString() || null)}}
                       className="relative group overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 cursor-pointer"
                       title="Click para ver en grande"
                     >
@@ -763,7 +762,7 @@ export function FinalCaseDetail({ caso, onBack }: FinalCaseDetailProps) {
           </button>
           <div className="flex items-center justify-center p-4 sm:p-6 min-h-[300px]">
             <img
-              src={visita?.url_image}
+              src={selectedImage?.toString()}
               alt="Visita de Emergencia"
               className="
                 max-w-full

@@ -8,11 +8,8 @@ import { Label } from "@radix-ui/react-label";
 import { updateUser } from "./api/UserApi";
 import { Menu } from "./types/Menu";
 import { getMenuByRol } from "./api/MenuApi";
-import { CasesPermissionsView } from "./CasesPermissionsView";
 
 export function HomeView({ onNavigate }: { onNavigate: (v: any) => void; }) {
-  const { user } = useAuth();
-  const idRol = localStorage.getItem("rol");
   const [actualizaInfo, setActualizaInfo] = useState<Boolean>(true);
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [email, setEmail] = useState("");
@@ -24,7 +21,10 @@ export function HomeView({ onNavigate }: { onNavigate: (v: any) => void; }) {
   CaseView: "caso",
   CasesView: "casos",
   EmergencyVisitsView: "emergencias",
-  CasesPermissionsView: "casos-permisos"
+  CasesPermissionsView: "casos-permisos",
+  PublicationsView: "publicaciones"//,
+  // ReturnAuthorizationView: "devoluciones",
+  // CreditNotesView: "notas-credito"
 };
 
   const PUBLIC_EMAIL_DOMAINS = [
@@ -103,15 +103,14 @@ export function HomeView({ onNavigate }: { onNavigate: (v: any) => void; }) {
     } catch (error: any) {
       console.error("Error al actualizar usuario:", error.message);
 
-      // Puedes mostrar el error donde prefieras
       alert(error.message || "Error al actualizar el usuario");
     }
   };
 
   return (
-    <div className="flex items-center justify-center min-h-[calc(100vh-12rem)]">
+    <div className="flex items-center justify-center min-h-[calc(100vh-12rem)] py-8">
       <div className="max-w-4xl w-full">
-        <div className="text-center mb-6 sm:mb-8">
+        <div className="text-center mb-8 sm:mb-8">
           <h1 className="text-gray-900 mb-3">Bienvenido al Sistema</h1>
           <p className="text-gray-600 text-base sm:text-lg">
             Selecciona una opción para comenzar
