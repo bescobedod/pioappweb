@@ -10,5 +10,6 @@ export interface VwDetallePermisos {
     id_user: number,
     usuario: string,
     fecha: string,
-    creado_por: string
+    creado_por: string,
+    id_rol: number
 }

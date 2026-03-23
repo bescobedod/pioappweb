@@ -88,12 +88,13 @@ export function CasesView({ onNavigate, onSelectCaso, onSelectEmergencyVisit } :
   const handleSelectCaso = async (caso: VwDetalleCaso) => {
     try {
       setLoading(true);
+      const rolesCierre = ["8", "10", "11", "13"]
 
       const visita = await getVisitasEmergenciaByCaso(caso.id_caso);
       if (visita) {
         onSelectEmergencyVisit(visita);
         
-        if((caso.estado === "Finalizado" || caso.estado === "Cerrado")  && (idRol === "10" || idRol === "8" || idRol === "11")) {
+        if(["Finalizado", "Cerrado"].includes(caso.estado)  && rolesCierre.includes(idRol || "")) {
           onSelectCaso(caso)
           onNavigate("caso-cierre")
         }
