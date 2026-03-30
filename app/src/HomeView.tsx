@@ -8,6 +8,7 @@ import { Label } from "@radix-ui/react-label";
 import { updateUser } from "./api/UserApi";
 import { Menu } from "./types/Menu";
 import { getMenuByRol } from "./api/MenuApi";
+import { PedidosYaView } from "./PedidosYaView";
 
 export function HomeView({ onNavigate }: { onNavigate: (v: any) => void; }) {
   const [actualizaInfo, setActualizaInfo] = useState<Boolean>(true);
@@ -22,9 +23,10 @@ export function HomeView({ onNavigate }: { onNavigate: (v: any) => void; }) {
   CasesView: "casos",
   EmergencyVisitsView: "emergencias",
   CasesPermissionsView: "casos-permisos",
-  PublicationsView: "publicaciones"//,
+  PublicationsView: "publicaciones",
   // ReturnAuthorizationView: "devoluciones",
-  // CreditNotesView: "notas-credito"
+  // CreditNotesView: "notas-credito",
+  PedidosYaView: 'pedidosya'
 };
 
   const PUBLIC_EMAIL_DOMAINS = [

@@ -17,7 +17,7 @@ type View =
   | "publicaciones"
   // | "devoluciones"
   // | "notas-credito"
-  ;
+  | "pedidosya";
 
 interface HeaderProps {
   currentView: View;

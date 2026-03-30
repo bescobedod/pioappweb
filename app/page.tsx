@@ -18,6 +18,7 @@ import { CasesPermissionsView } from "./src/CasesPermissionsView";
 import { PublicationsView } from "./src/PublicationsView";
 // import { ReturnAuthorizationView } from "./src/ReturnAuthorizationView";
 // import { CreditNotesView } from "./src/CreditNotesView";
+import { PedidosYaView } from "./src/PedidosYaView";
 import { useAuth } from "./src/api/context/AuthContext";
 
 type View =
@@ -34,7 +35,7 @@ type View =
   | "publicaciones"
   // | "devoluciones"
   // | "notas-credito"
-  ;
+  | "pedidosya";
 
 export default function App() {
   const [currentView, setCurrentView] = useState<View>("home");
@@ -180,6 +181,7 @@ export default function App() {
             {currentView === "publicaciones" && <PublicationsView/>}
             {/* {currentView === "devoluciones" && <ReturnAuthorizationView/>}
             {currentView === "notas-credito" && <CreditNotesView/>} */}
+            {currentView === "pedidosya" && <PedidosYaView/>}
           </div>
         </div>
         <aside className="hidden lg:block w-64 bg-white shadow-2xl border-l border-gray-200 fixed top-[110px] right-0 bottom-0 h-[calc(100vh-80px)]">
