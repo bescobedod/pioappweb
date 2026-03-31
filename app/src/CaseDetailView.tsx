@@ -53,7 +53,7 @@ export function CaseDetail({ caso, onBack }: CaseDetailProps) {
     const [showError, setShowError] = useState(false);
     const { user } = useAuth();
     const idRol = localStorage.getItem("rol");
-    const canEdit = idRol === "8";
+    const canEdit = idRol === "8" || idRol === "13";
 
     const fetchCases = async () => {
             try {
