@@ -16,7 +16,6 @@
     "@radix-ui/react-select": "^2.2.6",
     "@radix-ui/react-slot": "^1.2.4",
     "@radix-ui/react-tabs": "^1.1.13",
-    "auth": "^1.2.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "context": "^3.0.33",
@@ -28,18 +27,15 @@
     "lucide-react": "^0.554.0",
     "mapbox-gl": "^3.16.0",
     "motion": "^12.38.0",
-    "next": "16.0.3",
+    "next": "^16.2.4",
     "react": "19.2.0",
     "react-day-picker": "^9.11.1",
-    "react-devtools": "^7.0.1",
-    "react-dialog": "^0.1.0",
     "react-dom": "19.2.0",
     "react-modal": "^3.16.3",
     "react-super-responsive-table": "^6.0.2",
     "react-tabs": "^6.1.0",
     "tailwind-merge": "^3.4.0",
-    "tailwindcss": "^4.1.17",
-    "xlsx": "^0.18.5"
+    "tailwindcss": "^4.1.17"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.17",
@@ -53,6 +49,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.0.3",
     "plop": "^4.0.4",
+    "react-devtools": "^7.0.1",
     "typescript": "^5"
   }
 }
